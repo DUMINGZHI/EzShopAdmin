@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>shop - dumingzhi.com</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__admin__/style/bootstrap.css" rel="stylesheet">
+    <link href="__admin__/style/font-awesome.css" rel="stylesheet">
+    <link href="__admin__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__admin__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__admin__/style/demo.css" rel="stylesheet">
+    <link href="__admin__/style/typicons.css" rel="stylesheet">
+    <link href="__admin__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+	<!-- 头部 -->
+	{include file='common/top'}
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			<!-- Page Sidebar -->
+            {include file='common/left'}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{:url('index/index')}">系统</a>
+                    </li>
+                                        <li>
+                        <a href="{:url('conf/lst')}">配置管理</a>
+                    </li>
+                                        <li class="active">配置项</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">  
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="widget-main ">
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs tabs-flat" id="myTab11">
+                            <li class="active">
+                                <a data-toggle="tab" href="#home11">
+                                    店铺配置
+                                </a>
+                            </li>
+                            <li class="">
+                                <a data-toggle="tab" href="#profile11">
+                                    商品配置
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content tabs-flat">
+                            <div id="home11" class="tab-pane active">
+                                
+                                <div id="horizontal-form">
+                                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                                        {volist name='shopConfRes' id='shop'}
+                                        <div class="form-group">
+                                            <label for="username" class="col-sm-2 control-label no-padding-right">{$shop.cname}</label>
+                                            <div class="col-sm-6">
+                                                {if condition="$shop['from_type'] eq 'input' "}
+                                                <!-- input -->
+                                                <input class="form-control"  placeholder="" value="{$shop.value}" name="{$shop.ename}" type="text">
+                                                {elseif condition="$shop['from_type'] eq 'radio' "}
+                                                <!-- radio -->
+                                                <div class="radio">
+                                                    {if condition="$shop['values'] neq ''"}
+                                                        <?php $arr=explode(',', $shop['values']); ?>
+                                                        {foreach $arr as $k1=>$v1} 
+                                                            <label>
+                                                                <input {if condition="$shop['value'] eq $v1"} checked="checked" {/if} name="{$shop.ename}" type="radio" value="{$v1}">
+                                                                <span class="text">{$v1}</span>
+                                                            </label>
+                                                        {/foreach}
+                                                    {/if}  
+                                                </div>
+                                                {elseif condition="$shop['from_type'] eq 'checkbox' "}
+                                                <!-- checkbox -->
+                                                <div class="checkbox">
+                                                    {if condition="$shop['values'] neq ''"}
+                                                        <?php 
+                                                            $values=explode(',', $shop['values']); 
+                                                            $value=explode(',', $shop['value']); 
+                                                            $arr = array_intersect($values,$value);
+                                                        ?>
+                                                        {foreach $values as $k1=>$v1} 
+                                                            <label>
+                                                                <input {if condition="in_array($v1, $arr)"} checked="checked" {/if} class="colored-blue" name="{$shop.ename}[]" type="checkbox" value="{$v1}">
+                                                                <span class="text">{$v1}</span>
+                                                            </label>
+                                                        {/foreach}
+                                                    {/if}  
+                                                </div>
+                                                {elseif condition="$shop['from_type'] eq 'select' "}
+                                                <!-- select -->
+                                                <select name="{$shop.ename}">
+                                                    <option value="">请选择</option>
+                                                    {if condition="$shop['values'] neq ''"}
+                                                        <?php $arr=explode(',',$shop['values']); ?>
+                                                        {foreach $arr as $k2=>$v2}
+                                                            <option {if condition="$shop['value'] eq $v2"} selected="selected" {/if} value="{$v2}">{$v2}</option>
+                                                        {/foreach}
+                                                    {/if}
+                                                </select>
+                                                    
+                                                {elseif condition="$shop['from_type'] eq 'textarea' "}
+                                                <!-- textarea -->
+                                                <textarea class="form-control" name="{$shop.ename}">{$shop.value}</textarea>
+                                                {elseif condition="$shop['from_type'] eq 'file' "}
+                                                <!-- file -->
+                                                {if condition="$shop['value'] neq '' "}
+                                                <img src="__uploads__/{$shop.value}" height="30px">
+                                                {else/}
+                                                暂无缩略图
+                                                {/if}
+                                                <input placeholder="" name="{$shop.ename}" value="{$shop.value}" type="file">
+                                                {/if}
+                                            </div>
+                                        </div>
+                                        {/volist}
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" class="btn btn-default">保存信息</button>
+                                            </div>
+                                        </div>
+                                   
+                                </div>
+                            </div>
+
+                            <div id="profile11" class="tab-pane">
+                                
+                                <div class="form-horizontal">
+                                   
+                                        {volist name='GoodsConfRes' id='shop'}
+                                        <div class="form-group">
+                                            <label for="username" class="col-sm-2 control-label no-padding-right">{$shop.cname}</label>
+                                            <div class="col-sm-6">
+                                                {if condition="$shop['from_type'] eq 'input' "}
+                                                <!-- input -->
+                                                <input class="form-control"  placeholder="" value="{$shop.value}" name="{$shop.ename}" type="text">
+                                                {elseif condition="$shop['from_type'] eq 'radio' "}
+                                                <!-- radio -->
+                                                <div class="radio">
+                                                    {if condition="$shop['values'] neq ''"}
+                                                        <?php $arr=explode(',', $shop['values']); ?>
+                                                        {foreach $arr as $k1=>$v1} 
+                                                            <label>
+                                                                <input {if condition="$shop['value'] eq $v1"} checked="checked" {/if} name="{$shop.ename}" type="radio" value="{$v1}">
+                                                                <span class="text">{$v1}</span>
+                                                            </label>
+                                                        {/foreach}
+                                                    {/if}  
+                                                </div>
+                                                {elseif condition="$shop['from_type'] eq 'checkbox' "}
+                                                <!-- checkbox -->
+                                                <div class="checkbox">
+                                                    {if condition="$shop['values'] neq ''"}
+                                                        <?php 
+                                                            $values=explode(',', $shop['values']); 
+                                                            $value=explode(',', $shop['value']); 
+                                                            $arr = array_intersect($values,$value);
+                                                        ?>
+                                                        {foreach $values as $k1=>$v1} 
+                                                            <label>
+                                                                <input {if condition="in_array($v1, $arr)"} checked="checked" {/if} class="colored-blue" name="{$shop.ename}[]" type="checkbox" value="{$v1}">
+                                                                <span class="text">{$v1}</span>
+                                                            </label>
+                                                        {/foreach}
+                                                    {/if}  
+                                                </div>
+                                                {elseif condition="$shop['from_type'] eq 'select' "}
+                                                <!-- select -->
+                                                <select name="{$shop.ename}">
+                                                    <option value="">请选择</option>
+                                                    {if condition="$shop['values'] neq ''"}
+                                                        <?php $arr=explode(',',$shop['values']); ?>
+                                                        {foreach $arr as $k2=>$v2}
+                                                            <option {if condition="$shop['value'] eq $v2"} selected="selected" {/if} value="{$v2}">{$v2}</option>
+                                                        {/foreach}
+                                                    {/if}
+                                                </select>
+                                                    
+                                                {elseif condition="$shop['from_type'] eq 'textarea' "}
+                                                <!-- textarea -->
+                                                <textarea class="form-control" name="{$shop.ename}">{$shop.value}</textarea>
+                                                {elseif condition="$shop['from_type'] eq 'file' "}
+                                                <!-- file -->
+                                                {if condition="$shop['value'] neq '' "}
+                                                <img src="__uploads__/{$shop.value}" height="30px">
+                                                {else/}
+                                                暂无缩略图
+                                                {/if}
+                                                <input placeholder="" name="{$shop.ename}" value="{$shop.value}" type="file">
+                                                {/if}
+                                            </div>
+                                        </div>
+                                        {/volist}
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" class="btn btn-default">保存信息</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__admin__/style/jquery_002.js"></script>
+    <script src="__admin__/style/bootstrap.js"></script>
+    <script src="__admin__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__admin__/style/beyond.js"></script>
+    
+
+
+</body></html>

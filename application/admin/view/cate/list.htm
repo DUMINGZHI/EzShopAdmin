@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>shop - dumingzhi.com</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__admin__/style/bootstrap.css" rel="stylesheet">
+    <link href="__admin__/style/font-awesome.css" rel="stylesheet">
+    <link href="__admin__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__admin__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__admin__/style/demo.css" rel="stylesheet">
+    <link href="__admin__/style/typicons.css" rel="stylesheet">
+    <link href="__admin__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+	<!-- 头部 -->
+	{include file='common/top'}
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			<!-- Page Sidebar -->
+            {include file='common/left'}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{:url('index/index')}">系统</a>
+                    </li>
+                                        <li class="active">分类管理</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<button type="button" tooltip="添加分类" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('Cate/add')}'"> <i class="fa fa-plus"></i> Add
+</button>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">分类名字</th>
+                                <th class="text-center">类型</th>
+                                <th class="text-center">显示到导航栏</th>
+                                <th class="text-center">排序</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <form action="" method="post">
+                        <tbody>
+                            {volist name='dbCate' id='vo'}
+                            <tr>
+                                <td align="center" width="10%">{$vo.id}</td>
+                                <td align="left" ><?php echo str_repeat("-",$vo['level']*5);?>{$vo.cate_name}</td>
+                                <td align="center" width="10%">
+                                {if condition="$vo['cate_type'] eq 1"}
+                                系统分类
+                                {elseif condition="$vo['cate_type'] eq 2"}
+                                帮助分类
+                                {elseif condition="$vo['cate_type'] eq 3"}
+                                网店帮助
+                                {elseif condition="$vo['cate_type'] eq 4"}
+                                网店信息
+                                {elseif condition="$vo['cate_type'] eq 5"}
+                                普通分类
+                                {/if}
+                                </td>
+                                <td align="center" width="10%">
+                                    {if condition="$vo['show_nav'] eq 1"}
+                                    是
+                                    {else /}
+                                    否
+                                    {/if}
+                                </td>
+                                <td align="center" width="10%"><input type="text" name="sort[{$vo['id']}]" value="{$vo.sort}" style="width: 50px; text-align: center;"></td>
+                                <td align="center" width="15%">
+                                    <a href="{:url('cate/edit',array('id'=>$vo['id']))}" class="btn btn-primary btn-sm shiny">
+                                        <i class="fa fa-edit"></i> 编辑
+                                    </a>
+                                    {notin name="$vo['id']" value="1,2,3"}
+                                    <a href="#" onClick="warning('确实要删除吗', '{:url('cate/del',array('id'=>$vo['id']))}')" class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                    {else /}
+                                    <a href="#" disabled='disabled' class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                    {/notin}
+                                </td>
+                            </tr>
+                            {/volist}
+                            <tr><td colspan="6" align="right" style="padding-right: 18.3%;"><input type="submit" class="btn btn-danger btn-sm shiny"></td></tr>
+                        </tbody>
+                        </form>
+                    </table>
+                </div>
+                <div style="text-align: center; padding-top: 10px">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__admin__/style/jquery_002.js"></script>
+    <script src="__admin__/style/bootstrap.js"></script>
+    <script src="__admin__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__admin__/style/beyond.js"></script>
+    
+
+
+</body></html>

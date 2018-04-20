@@ -1,0 +1,472 @@
+<div class="site-nav" id="site-nav">
+    <div class="w w1200">
+        <div class="fl">	
+        	<div class="scrollBody" id="scrollBody">
+        		
+        	</div>	<div class="txt-info" id="ECS_MEMBERZONE">
+
+<span>您好 &nbsp;<a href="#">86913361-232247</a></span>
+<span>，欢迎来到&nbsp;<a alt="首页" title="首页" href="index.php">童攀课堂</a></span>
+<span>[<a href="#">退出</a>]</span>
+	
+            </div>
+        </div>
+        <ul class="quick-menu fr">
+<li>
+            	<div class="dt"><a href="#">我的订单</a></div>
+            </li>
+            <li class="spacer"></li>
+<li>
+            	<div class="dt"><a href="#">我的浏览</a></div>
+            </li>
+            <li class="spacer"></li>
+<li>
+            	<div class="dt"><a href="#">我的收藏</a></div>
+            </li>
+            <li class="spacer"></li>
+<li>
+            	<div class="dt"><a href="#">客户服务</a></div>
+            </li>
+            <li class="spacer"></li>
+            <li class="li_dorpdown" data-ectype="dorpdown">
+<div class="dt dsc-cm">网站导航<i class="iconfont icon-down"></i></div>
+<div class="dd dorpdown-layer">
+    <dl class="fore1">
+        <dt>特色主题</dt>
+        <dd>
+<div class="item"><a href="#">家用电器</a></div>
+<div class="item"><a href="#">手机数码</a></div>
+<div class="item"><a href="#">电脑办公</a></div>
+</dd>
+    </dl>
+    <dl class="fore2">
+        <dt>促销活动</dt>
+        <dd>
+<div class="item"><a href="#">拍卖活动</a></div>
+<div class="item"><a href="#">共创商品</a></div>
+<div class="item"><a href="#">优惠活动</a></div>
+<div class="item"><a href="#">批发市场</a></div>
+<div class="item"><a href="#">超值礼包</a></div>
+<div class="item"><a href="#">优惠券</a></div>
+    </dd>
+    </dl>
+</div>
+            </li>
+    </ul>
+    </div>
+</div>
+<div class="header">
+    <div class="w w1200">
+        <div class="logo">
+            <div class="logoImg"><a href="#"><img src="__index__/img/logo.png"></a></div>
+            <div class="logoAdv"><!-- <a href="#"><img src="__index__/img/ecsc-join.gif"></a> --></div>
+        </div>
+        <div class="dsc-search">
+            <div class="form">
+<form id="searchForm" name="searchForm" method="get" action="search.php" onsubmit="return checkSearchForm()" class="search-form">
+    <input autocomplete="off" onkeyup="lookup(this.value);" name="keywords" id="keyword" value="内衣" class="search-text" type="text">
+    <input name="store_search_cmt" value="0" type="hidden">
+    <button type="submit" class="button button-goods" onclick="checkstore_search_cmt(0)">搜商品</button>
+</form>
+<ul class="keyword">
+<li><a href="#">周大福</a></li>
+<li><a href="#">内衣</a></li>
+<li><a href="#">Five Plus</a></li>
+<li><a href="#">手机</a></li>
+</ul>
+
+<div class="suggestions_box" id="suggestions" style="display:none;">
+    <div class="suggestions_list" id="auto_suggestions_list">
+        &nbsp;
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="shopCart" data-ectype="dorpdown" id="ECS_CARTINFO" data-carteveval="0">
+            
+<div class="shopCart-con dsc-cm">
+	<a href="#">
+		<i class="iconfont icon-carts"></i>
+		<span>我的购物车</span>
+		<em class="count cart_num">0</em>
+	</a>
+</div>
+<div class="dorpdown-layer" ectype="dorpdownLayer">
+        <div class="prompt"><div class="nogoods"><b></b><span>购物车中还没有商品，赶紧选购吧！</span></div></div>
+    </div>
+
+<script type="text/javascript">
+function changenum(rec_id, diff, warehouse_id, area_id)
+{
+	var cValue = $('#cart_value').val();
+    var goods_number =Number($('#goods_number_' + rec_id).text()) + Number(diff);
+ 
+	if(goods_number < 1)
+	{
+		return false;	
+	}
+	else
+	{
+		change_goods_number(rec_id,goods_number, warehouse_id, area_id, cValue);
+	}
+}
+function change_goods_number(rec_id, goods_number, warehouse_id, area_id, cValue)
+{
+	if(cValue != '' || cValue == 'undefined'){
+	   var cValue = $('#cart_value').val(); 
+	}   
+	Ajax.call('flow.php?step=ajax_update_cart', 'rec_id=' + rec_id +'&goods_number=' + goods_number +'&cValue=' + cValue +'&warehouse_id=' + warehouse_id +'&area_id=' + area_id, change_goods_number_response, 'POST','JSON');                
+}
+function change_goods_number_response(result)
+{    
+	var rec_id = result.rec_id;           
+    if (result.error == 0)
+    {
+       $('#goods_number_' +rec_id).val(result.goods_number);//更新数量
+       $('#goods_subtotal_' +rec_id).html(result.goods_subtotal);//更新小计
+       if (result.goods_number <= 0)
+        {
+			//数量为零则隐藏所在行
+            $('#tr_goods_' +rec_id).style.display = 'none';
+            $('#tr_goods_' +rec_id).innerHTML = '';
+        }
+        $('#total_desc').html(result.flow_info);//更新合计
+        if($('ECS_CARTINFO'))
+        {//更新购物车数量
+            $('#ECS_CARTINFO').html(result.cart_info);
+        }
+
+		if(result.group.length > 0){
+			for(var i=0; i<result.group.length; i++){
+				$("#" + result.group[i].rec_group).html(result.group[i].rec_group_number);//配件商品数量
+				$("#" + result.group[i].rec_group_talId).html(result.group[i].rec_group_subtotal);//配件商品金额
+			}
+		}
+
+		$("#goods_price_" + rec_id).html(result.goods_price);
+		$(".cart_num").html(result.subtotal_number);
+	}
+	else if (result.message != '')
+	{
+		$('#goods_number_' +rec_id).val(result.cart_Num);//更新数量
+		alert(result.message);
+	}                
+}
+
+function deleteCartGoods(rec_id,index)
+{
+	Ajax.call('delete_cart_goods.php', 'id='+rec_id+'&index='+index, deleteCartGoodsResponse, 'POST', 'JSON');
+}
+
+/**
+ * 接收返回的信息
+ */
+function deleteCartGoodsResponse(res)
+{
+  if (res.error)
+  {
+    alert(res.err_msg);
+  }
+  else if(res.index==1)
+  {
+		Ajax.call('get_ajax_content.php?act=get_content', 'data_type=cart_list', return_cart_list, 'POST', 'JSON');
+  }
+  else
+  {
+	  $("#ECS_CARTINFO").html(res.content);
+	  $(".cart_num").html(res.cart_num);
+  }
+}
+
+function return_cart_list(result)
+{
+	$(".cart_num").html(result.cart_num);
+	$(".pop_panel").html(result.content);
+	tbplHeigth();
+}
+</script>        </div>
+    </div>
+</div>
+<div class="nav dsc-zoom">
+	<div class="w w1200">
+		<div class="categorys">
+			<div class="categorys-type"><a href="#">男装、女装、内衣</a></div>
+			<div class="categorys-tab-content">
+				<div class="categorys-items" ectype="items">
+				<div class="categorys-item" ectype="item" data-catid="347" data-eveval="0">
+<div class="item-content">
+	<i class="iconfont icon-right"></i>
+	<div class="categorys-title">
+		<strong><a href="#">女装</a></strong>
+		<span>
+            <a href="#">连衣裙</a>
+<a href="#">蕾丝/雪纺衫</a>
+<a href="#">衬衫</a>
+<a href="#">T恤</a>
+<a href="#">半身裙</a>
+<a href="#">休闲裤</a>
+		</span>
+	</div>
+</div>
+<div class="categorys-items-layer" ectype="cateLayer" style="display: none;">
+	<div class="catetop-layer-con clearfix">
+		<h3><a href="#">女装</a></h3>
+		<ul class="cate-list">
+	<li><a href="#">连衣裙</a></li>
+	<li><a href="#">蕾丝/雪纺衫</a></li>
+	<li><a href="#">衬衫</a></li>
+	<li><a href="#">T恤</a></li>
+	<li><a href="#">半身裙</a></li>
+	<li><a href="#">休闲裤</a></li>
+	<li><a href="#">短裤</a></li>
+	<li><a href="#">牛仔裤</a></li>
+	<li><a href="#">针织衫</a></li>
+	<li><a href="#">吊带/背心</a></li>
+	<li><a href="#">打底衫</a></li>
+	<li><a href="#">打底裤</a></li>
+	<li><a href="#">正装裤</a></li>
+	<li><a href="#">小西服</a></li>
+	<li><a href="#">马甲</a></li>
+	<li><a href="#">风衣</a></li>
+	<li><a href="#">羊毛衫</a></li>
+	<li><a href="#">羊绒衫</a></li>
+	<li><a href="#">短外套</a></li>
+	<li><a href="#">棉服</a></li>
+	<li><a href="#">毛呢大衣</a></li>
+	<li><a href="#">加绒裤</a></li>
+	<li><a href="#">羽绒服</a></li>
+	<li><a href="#">皮草</a></li>
+	<li><a href="#">真皮皮衣</a></li>
+	<li><a href="#">仿皮皮衣</a></li>
+	<li><a href="#">旗袍/唐装</a></li>
+	<li><a href="#">礼服</a></li>
+	<li><a href="#">婚纱</a></li>
+	<li><a href="#">中老年女装</a></li>
+	<li><a href="#">大码女装</a></li>
+</ul>
+<ul class="cate-logo">    
+	<li><a href="#"><img src="__index__/img/1490071974970349584.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490072756032175204.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490073577683159021.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490073591535005714.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490072860522023692.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490074030328949587.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490228075580091113.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490074901892372216.jpg" width="112" height="49"></a></li>
+</ul>
+	</div>
+</div>
+					</div>
+				<div class="categorys-item" ectype="item" data-catid="463" data-eveval="0">
+<div class="item-content">
+	<i class="iconfont icon-right"></i>
+	<div class="categorys-title">
+		<strong><a href="#">男装</a></strong>
+		<span>
+            <a href="#">T恤</a>
+<a href="#">裤子</a>
+<a href="#">POLO衫</a>
+<a href="#">针织衫</a>
+<a href="#">夹克</a>
+<a href="#">卫衣</a>
+        		</span>
+	</div>
+</div>
+<div class="categorys-items-layer" ectype="cateLayer" style="display: none;">
+	<div class="catetop-layer-con clearfix">
+		<h3><a href="#">男装</a></h3>
+		<ul class="cate-list">
+	<li><a href="#">T恤</a></li>
+	<li><a href="#">裤子</a></li>
+	<li><a href="#">POLO衫</a></li>
+	<li><a href="#">针织衫</a></li>
+	<li><a href="#">夹克</a></li>
+	<li><a href="#">卫衣</a></li>
+	<li><a href="#">风衣</a></li>
+	<li><a href="#">马甲/背心</a></li>
+	<li><a href="#">短裤</a></li>
+	<li><a href="#">休闲裤</a></li>
+	<li><a href="#">牛仔裤</a></li>
+	<li><a href="#">西服</a></li>
+	<li><a href="#">西裤</a></li>
+	<li><a href="#">西服套装</a></li>
+	<li><a href="#">真皮皮衣</a></li>
+	<li><a href="#">仿皮皮衣</a></li>
+	<li><a href="#">羽绒服</a></li>
+	<li><a href="#">毛呢大衣</a></li>
+	<li><a href="#">棉服</a></li>
+	<li><a href="#">羊绒衫</a></li>
+	<li><a href="#">羊毛衫</a></li>
+	<li><a href="#">卫裤/运动裤</a></li>
+</ul>
+		<ul class="cate-logo">    
+	<li><a href="#"><img src="__index__/img/1490073529881448780.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490072981305868823.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490072373278367315.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490072879222701895.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490073539440462760.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490072765604121481.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490073675778205608.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490073240845049320.jpg" width="112" height="49"></a></li>
+</ul>
+	</div>
+</div>
+					</div>
+				<div class="categorys-item" ectype="item" data-catid="630" data-eveval="0">
+<div class="item-content">
+	<i class="iconfont icon-right"></i>
+	<div class="categorys-title">
+		<strong><a href="#">服饰配件</a></strong>
+		<span>
+            <a href="#">配饰</a>
+<a href="#">光学镜架/镜片</a>
+<a href="#">防辐射眼镜</a>
+<a href="#">女士丝巾/围巾/披肩</a>
+<a href="#">棒球帽</a>
+<a href="#">遮阳伞/雨伞</a>
+		</span>
+	</div>
+</div>
+<div class="categorys-items-layer" ectype="cateLayer" style="display: none;">
+	<div class="catetop-layer-con clearfix">
+		<h3><a href="#">服饰配件</a></h3>
+		<ul class="cate-list">
+	<li><a href="#">配饰</a></li>
+	<li><a href="#">光学镜架/镜片</a></li>
+	<li><a href="#">防辐射眼镜</a></li>
+	<li><a href="#">女士丝巾/围巾/披肩</a></li>
+	<li><a href="#">棒球帽</a></li>
+	<li><a href="#">遮阳伞/雨伞</a></li>
+	<li><a href="#">遮阳帽</a></li>
+	<li><a href="#">领带/领结/领带夹</a></li>
+	<li><a href="#">男士腰带/礼盒</a></li>
+	<li><a href="#">防晒手套</a></li>
+	<li><a href="#">老花镜</a></li>
+	<li><a href="#">袖扣</a></li>
+	<li><a href="#">鸭舌帽</a></li>
+	<li><a href="#">装饰眼镜</a></li>
+	<li><a href="#">女士腰带/礼盒</a></li>
+</ul>
+		<ul class="cate-logo">    <li><a href="#"><img src="__index__/img/1490228100138579787.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490072804442637685.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490171981556005380.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490073561018734078.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490072823106532144.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490072677495061584.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490074901892372216.jpg" width="112" height="49"></a></li>
+</ul>
+	</div>
+</div>
+					</div>
+				<div class="categorys-item" ectype="item" data-catid="547" data-eveval="0">
+<div class="item-content">
+	<i class="iconfont icon-right"></i>
+	<div class="categorys-title">
+		<strong><a href="#">内衣</a></strong>
+		<span>
+            <a href="#">内衣配件</a>
+<a href="#">文胸</a>
+<a href="#">睡衣/家居服</a>
+<a href="#">情侣睡衣</a>
+<a href="#">文胸套装</a>
+<a href="#">少女文胸</a>
+        		</span>
+	</div>
+</div>
+<div class="categorys-items-layer" ectype="cateLayer" style="display: none;">
+	<div class="catetop-layer-con clearfix">
+		<h3><a href="#">内衣</a></h3>
+		<ul class="cate-list">
+	<li><a href="#">内衣配件</a></li>
+	<li><a href="#">文胸</a></li>
+	<li><a href="#">睡衣/家居服</a></li>
+	<li><a href="#">情侣睡衣</a></li>
+	<li><a href="#">文胸套装</a></li>
+	<li><a href="#">少女文胸</a></li>
+	<li><a href="#">女式内裤</a></li>
+	<li><a href="#">男式内裤</a></li>
+	<li><a href="#">商务男袜</a></li>
+	<li><a href="#">休闲棉袜</a></li>
+	<li><a href="#">吊带/背心</a></li>
+	<li><a href="#">打底衫</a></li>
+	<li><a href="#">抹胸</a></li>
+	<li><a href="#">连裤袜/丝袜</a></li>
+	<li><a href="#">美腿袜</a></li>
+	<li><a href="#">打底裤袜</a></li>
+	<li><a href="#">塑身美体</a></li>
+	<li><a href="#">大码内衣</a></li>
+</ul>
+		<ul class="cate-logo">    <li><a href="#"><img src="__index__/img/1490072950580851309.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490227784119952387.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490073518703639070.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490073982547710498.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490074308773778697.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490072313895957648.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490073454678614186.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490227986732712711.jpg" width="112" height="49"></a></li>
+</ul>
+	</div>
+</div>
+					</div>
+				<div class="categorys-item" ectype="item" data-catid="1442" data-eveval="0">
+<div class="item-content">
+	<i class="iconfont icon-right"></i>
+	<div class="categorys-title">
+		<strong><a href="#">运动户外</a></strong>
+		<span>
+            <a href="#">跑步运动</a>
+<a href="#">室内健身</a>
+<a href="#">自行车运动</a>
+<a href="#">轮滑运动</a>
+<a href="#">羽毛球/网球/乒乓球</a>
+<a href="#">足球/篮球/排球</a>
+        		</span>
+	</div>
+</div>
+<div class="categorys-items-layer" ectype="cateLayer" style="display: none;">
+	<div class="catetop-layer-con clearfix">
+		<h3><a href="#">运动户外</a></h3>
+		<ul class="cate-list">
+	<li><a href="#">跑步运动</a></li>
+	<li><a href="#">室内健身</a></li>
+	<li><a href="#">自行车运动</a></li>
+	<li><a href="#">轮滑运动</a></li>
+	<li><a href="#">羽毛球/网球/乒乓球</a></li>
+	<li><a href="#">足球/篮球/排球</a></li>
+	<li><a href="#">运动休闲</a></li>
+	<li><a href="#">钓鱼用品</a></li>
+	<li><a href="#">野营烧烤</a></li>
+	<li><a href="#">游泳运动</a></li>
+	<li><a href="#">舞蹈运动</a></li>
+	<li><a href="#">瑜伽运动</a></li>
+	<li><a href="#">防狼防身</a></li>
+	<li><a href="#">水上运动</a></li>
+</ul>
+		<ul class="cate-logo">    <li><a href="#"><img src="__index__/img/1490072850306019115.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490072931218635674.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490072898345358625.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490073009638652059.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490073324022460149.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490072918339853569.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490072889090025069.jpg" width="112" height="49"></a></li>
+    <li><a href="#"><img src="__index__/img/1490072993409028193.jpg" width="112" height="49"></a></li>
+</ul>
+	</div>
+</div>
+					</div>
+			</div>
+			</div>
+		</div>
+		<div class="nav-main">
+			<ul class="navitems">
+	            <li><a href="#" class="curr">首页</a></li>
+	            <li><a href="#"  >女装街</a></li>
+	            <li><a href="#"  >男人柜</a></li>
+	            <li><a href="#"  >品牌专区</a></li>
+	            <li><a href="#"  >聚划算</a></li>
+	            <li><a href="#"  >积分商城</a></li>
+        	</ul>
+		</div>
+	</div>
+</div>

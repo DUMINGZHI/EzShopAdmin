@@ -1,0 +1,417 @@
+<div class="site-nav" id="site-nav">
+    <div class="w w1390">
+        <div class="fl">    
+           <div class="txt-info" id="ECS_MEMBERZONE">
+                
+    <a href="#" class="link-login red">请登录</a>
+        <a href="#" class="link-regist">免费注册</a>
+        
+            </div>
+        </div>
+        <ul class="quick-menu fr">
+                    <li>
+                <div class="dt"><a href="#" >我的订单</a></div>
+            </li>
+            <li class="spacer"></li>
+                    <li>
+                <div class="dt"><a href="#" >我的浏览</a></div>
+            </li>
+            <li class="spacer"></li>
+                    <li>
+                <div class="dt"><a href="#" >我的收藏</a></div>
+            </li>
+            <li class="spacer"></li>
+                    <li>
+                <div class="dt"><a href="#" >客户服务</a></div>
+            </li>
+            <li class="spacer"></li>
+                    <li class="li_dorpdown" data-ectype="dorpdown">
+                <div class="dt dsc-cm">网站导航<i class="iconfont icon-down"></i></div>
+                <div class="dd dorpdown-layer">
+                    <dl class="fore1">
+                        <dt>特色主题</dt>
+                        <dd>
+            <div class="item"><a href="#" target="_blank">家用电器</a></div>
+<div class="item"><a href="#" target="_blank">手机数码</a></div>
+<div class="item"><a href="#" target="_blank">电脑办公</a></div>
+            </dd>
+                    </dl>
+                    <dl class="fore2">
+                        <dt>促销活动</dt>
+                        <dd>
+                        <div class="item"><a href="#">拍卖活动</a></div>
+<div class="item"><a href="#">共创商品</a></div>
+<div class="item"><a href="#">优惠活动</a></div>
+<div class="item"><a href="#">批发市场</a></div>
+<div class="item"><a href="#">超值礼包</a></div>
+<div class="item"><a href="#">优惠券</a></div>
+</dd>
+                    </dl>
+                </div>
+            </li>
+                    </ul>
+    </div>
+</div>
+<div class="header">
+    <div class="w w1390">
+        <div class="logo">
+            <div class="logoImg"><a href="#"><img src="./img/logo.png" /></a></div>
+        </div>
+        <div class="dsc-search">
+            <div class="form">
+                <form id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()" class="search-form">
+                        <input autocomplete="off" onKeyUp="lookup(this.value);" name="keywords" type="text" id="keyword" value="内衣" class="search-text"/>
+                    <input type="hidden" name="store_search_cmt" value="0">
+                    <button type="submit" class="button button-goods" onclick="checkstore_search_cmt(0)" >搜商品</button>
+                </form>
+    <ul class="keyword">
+    <li><a href="#" target="_blank">周大福</a></li>
+    <li><a href="#" target="_blank">内衣</a></li>
+    <li><a href="#" target="_blank">Five Plus</a></li>
+    <li><a href="#" target="_blank">手机</a></li>
+    </ul>
+    
+                <div class="suggestions_box" id="suggestions" style="display:none;">
+                    <div class="suggestions_list" id="auto_suggestions_list">
+                        &nbsp;
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="shopCart" data-ectype="dorpdown" id="ECS_CARTINFO" data-carteveval="0">
+            
+<div class="shopCart-con dsc-cm">
+    <a href="#">
+        <i class="iconfont icon-carts"></i>
+        <span>我的购物车</span>
+        <em class="count cart_num">0</em>
+    </a>
+</div>
+<div class="dorpdown-layer" ectype="dorpdownLayer">
+        <div class="prompt"><div class="nogoods"><b></b><span>购物车中还没有商品，赶紧选购吧！</span></div></div>
+    </div>
+
+<script type="text/javascript">
+function changenum(rec_id, diff, warehouse_id, area_id)
+{
+    var cValue = $('#cart_value').val();
+    var goods_number =Number($('#goods_number_' + rec_id).text()) + Number(diff);
+ 
+    if(goods_number < 1)
+    {
+        return false;   
+    }
+    else
+    {
+        change_goods_number(rec_id,goods_number, warehouse_id, area_id, cValue);
+    }
+}
+function change_goods_number(rec_id, goods_number, warehouse_id, area_id, cValue)
+{
+    if(cValue != '' || cValue == 'undefined'){
+       var cValue = $('#cart_value').val(); 
+    }   
+    Ajax.call('flow.php?step=ajax_update_cart', 'rec_id=' + rec_id +'&goods_number=' + goods_number +'&cValue=' + cValue +'&warehouse_id=' + warehouse_id +'&area_id=' + area_id, change_goods_number_response, 'POST','JSON');                
+}
+function change_goods_number_response(result)
+{    
+    var rec_id = result.rec_id;           
+    if (result.error == 0)
+    {
+       $('#goods_number_' +rec_id).val(result.goods_number);//更新数量
+       $('#goods_subtotal_' +rec_id).html(result.goods_subtotal);//更新小计
+       if (result.goods_number <= 0)
+        {
+            //数量为零则隐藏所在行
+            $('#tr_goods_' +rec_id).style.display = 'none';
+            $('#tr_goods_' +rec_id).innerHTML = '';
+        }
+        $('#total_desc').html(result.flow_info);//更新合计
+        if($('ECS_CARTINFO'))
+        {//更新购物车数量
+            $('#ECS_CARTINFO').html(result.cart_info);
+        }
+
+        if(result.group.length > 0){
+            for(var i=0; i<result.group.length; i++){
+                $("#" + result.group[i].rec_group).html(result.group[i].rec_group_number);//配件商品数量
+                $("#" + result.group[i].rec_group_talId).html(result.group[i].rec_group_subtotal);//配件商品金额
+            }
+        }
+
+        $("#goods_price_" + rec_id).html(result.goods_price);
+        $(".cart_num").html(result.subtotal_number);
+    }
+    else if (result.message != '')
+    {
+        $('#goods_number_' +rec_id).val(result.cart_Num);//更新数量
+        alert(result.message);
+    }                
+}
+
+function deleteCartGoods(rec_id,index)
+{
+    Ajax.call('delete_cart_goods.php', 'id='+rec_id+'&index='+index, deleteCartGoodsResponse, 'POST', 'JSON');
+}
+
+/**
+ * 接收返回的信息
+ */
+function deleteCartGoodsResponse(res)
+{
+  if (res.error)
+  {
+    alert(res.err_msg);
+  }
+  else if(res.index==1)
+  {
+        Ajax.call('get_ajax_content.php?act=get_content', 'data_type=cart_list', return_cart_list, 'POST', 'JSON');
+  }
+  else
+  {
+      $("#ECS_CARTINFO").html(res.content);
+      $(".cart_num").html(res.cart_num);
+  }
+}
+
+function return_cart_list(result)
+{
+    $(".cart_num").html(result.cart_num);
+    $(".pop_panel").html(result.content);
+    tbplHeigth();
+}
+</script>        </div>
+    </div>
+</div>
+<div class="nav dsc-zoom">
+    <div class="w w1390">
+        <div class="categorys site-mast">
+            <div class="categorys-type"><a href="#" target="_blank">全部商品分类</a></div>
+            <div class="categorys-tab-content">
+                <div class="categorys-items" id="cata-nav">
+                                <div class="categorys-item" ectype="cateItem" data-id="858" data-eveval="0">
+                        <div class="item item-content">
+                            <i class="iconfont icon-ele"></i>
+                            <div class="categorys-title">
+                                <strong>
+                            <a href="#" target="_blank">家用电器</a>
+                            </strong>
+                                    <span>
+                        <a href="#" target="_blank">大家电</a>
+            
+                        <a href="#" target="_blank">生活电器</a>
+            
+                    
+                    
+                    
+            </span>
+                                </div>
+                        </div>
+                        <div class="categorys-items-layer" ectype="cateLayer">
+<div class="cate-layer-con clearfix">
+    <div class="cate-layer-left">
+        <div class="cate_channel" ectype="channels_858"></div>
+        <div class="cate_detail" ectype="subitems_858"></div>
+    </div>
+    <div class="cate-layer-rihgt" ectype="brands_858"></div>
+</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                <div class="categorys-item" ectype="cateItem" data-id="3" data-eveval="0">
+                        <div class="item item-content">
+                            <i class="iconfont icon-digital"></i>
+                            <div class="categorys-title">
+                                <strong>
+                            <a href="#" target="_blank" class="division_cat">手机</a>、<a href="#" target="_blank" class="division_cat">数码</a>、<a href="#" target="_blank" class="division_cat">通信</a>                         </strong>
+                                    <span>
+                        <a href="#" target="_blank">智能设备</a>
+            
+                        <a href="#" target="_blank">数码配件</a>
+            
+                    
+                    
+                    
+                    
+                    
+            </span>
+                                </div>
+                        </div>
+                        <div class="categorys-items-layer" ectype="cateLayer">
+<div class="cate-layer-con clearfix">
+    <div class="cate-layer-left">
+        <div class="cate_channel" ectype="channels_3"></div>
+        <div class="cate_detail" ectype="subitems_3"></div>
+    </div>
+    <div class="cate-layer-rihgt" ectype="brands_3"></div>
+</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                <div class="categorys-item" ectype="cateItem" data-id="4" data-eveval="0">
+                        <div class="item item-content">
+                            <i class="iconfont icon-computer"></i>
+                            <div class="categorys-title">
+                                <strong>
+                            <a href="#" target="_blank">电脑、办公</a>
+                            </strong>
+                                    <span>
+                        <a href="#" target="_blank">服务产品</a>
+            
+                        <a href="#" target="_blank">电脑整机</a>
+            
+                    
+                    
+                    
+                    
+            </span>
+                                </div>
+                        </div>
+                        <div class="categorys-items-layer" ectype="cateLayer">
+<div class="cate-layer-con clearfix">
+    <div class="cate-layer-left">
+        <div class="cate_channel" ectype="channels_4"></div>
+        <div class="cate_detail" ectype="subitems_4"></div>
+    </div>
+    <div class="cate-layer-rihgt" ectype="brands_4"></div>
+</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                <div class="categorys-item" ectype="cateItem" data-id="5" data-eveval="0">
+                        <div class="item item-content">
+                            <i class="iconfont icon-bed"></i>
+                            <div class="categorys-title">
+                                <strong>
+                            <a href="#" target="_blank">家居、家具、家装、厨具</a>
+                            </strong>
+                                    <span>
+                        <a href="#" target="_blank">厨具</a>
+            
+                        <a href="#" target="_blank">家装建材</a>
+            
+                    
+                    
+                    
+                    
+            </span>
+                                </div>
+                        </div>
+                        <div class="categorys-items-layer" ectype="cateLayer">
+<div class="cate-layer-con clearfix">
+    <div class="cate-layer-left">
+        <div class="cate_channel" ectype="channels_5"></div>
+        <div class="cate_detail" ectype="subitems_5"></div>
+    </div>
+    <div class="cate-layer-rihgt" ectype="brands_5"></div>
+</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                <div class="categorys-item" ectype="cateItem" data-id="6" data-eveval="0">
+                        <div class="item item-content">
+                            <i class="iconfont icon-clothes"></i>
+                            <div class="categorys-title">
+                                <strong>
+                            <a href="#" target="_blank">男装、女装、内衣</a>
+                            </strong>
+                                    <span>
+                        <a href="#" target="_blank">女装</a>
+            
+                        <a href="#" target="_blank">男装</a>
+            
+                    
+                    
+                    
+            </span>
+                                </div>
+                        </div>
+                        <div class="categorys-items-layer" ectype="cateLayer">
+<div class="cate-layer-con clearfix">
+    <div class="cate-layer-left">
+        <div class="cate_channel" ectype="channels_6"></div>
+        <div class="cate_detail" ectype="subitems_6"></div>
+    </div>
+    <div class="cate-layer-rihgt" ectype="brands_6"></div>
+</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                <div class="categorys-item" ectype="cateItem" data-id="8" data-eveval="0">
+                        <div class="item item-content">
+                            <i class="iconfont icon-shoes"></i>
+                            <div class="categorys-title">
+                                <strong>
+                            <a href="#" target="_blank">鞋靴、箱包、钟表、奢侈品</a>
+                            </strong>
+                                    <span>
+                        <a href="#" target="_blank">奢侈品</a>
+            
+                        <a href="#" target="_blank">功能箱包</a>
+            
+                    
+                    
+                    
+                    
+                    
+            </span>
+                                </div>
+                        </div>
+                        <div class="categorys-items-layer" ectype="cateLayer">
+<div class="cate-layer-con clearfix">
+    <div class="cate-layer-left">
+        <div class="cate_channel" ectype="channels_8"></div>
+        <div class="cate_detail" ectype="subitems_8"></div>
+    </div>
+    <div class="cate-layer-rihgt" ectype="brands_8"></div>
+</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                <div class="categorys-item" ectype="cateItem" data-id="860" data-eveval="0">
+                        <div class="item item-content">
+                            <i class="iconfont icon-heal"></i>
+                            <div class="categorys-title">
+                                <strong>
+                            <a href="#" target="_blank">个人化妆、清洁用品</a>
+                            </strong>
+                                    <span>
+                        <a href="#" target="_blank">面部护肤</a>
+            
+                        <a href="#" target="_blank">洗发护发</a>
+            
+                    
+                    
+                    
+                    
+                    
+            </span>
+                                </div>
+                        </div>
+                        <div class="categorys-items-layer" ectype="cateLayer">
+<div class="cate-layer-con clearfix">
+    <div class="cate-layer-left">
+        <div class="cate_channel" ectype="channels_860"></div>
+        <div class="cate_detail" ectype="subitems_860"></div>
+    </div>
+    <div class="cate-layer-rihgt" ectype="brands_860"></div>
+</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                            </div>
+            </div>
+        </div>
+        <div class="nav-main" id="nav">
+            <ul class="navitems">
+                <li><a href="#" class="curr">首页</a></li>
+                <li><a href="#"  >女装街</a></li>
+                <li><a href="#"  >男人柜</a></li>
+                <li><a href="#"  >品牌专区</a></li>
+                <li><a href="#"  >聚划算</a></li>
+                <li><a href="#"  >积分商城</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

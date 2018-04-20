@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>shop - dumingzhi.com</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__admin__/style/bootstrap.css" rel="stylesheet">
+    <link href="__admin__/style/font-awesome.css" rel="stylesheet">
+    <link href="__admin__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__admin__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__admin__/style/demo.css" rel="stylesheet">
+    <link href="__admin__/style/typicons.css" rel="stylesheet">
+    <link href="__admin__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+	<!-- 头部 -->
+	{include file='common/top'}
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			<!-- Page Sidebar -->
+            {include file='common/left'}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{:url('index/index')}">系统</a>
+                    </li>
+
+                    <li>
+                        <a href="{:url('goods/lst')}">商品列表</a>
+                    </li>
+                                        <li class="active">库存管理</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+            <form class="form-horizontal" action="" method="post">
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                {volist name="radioAttr" id="vo"}
+                                <th class="text-center">{$key}</th>
+                                {/volist}
+                                <th class="text-center" width="15%">库存量</th>
+                                <th class="text-center" width="20%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <?php if($goodsProRes):
+                                    foreach($goodsProRes as $k0=>$v0):
+                                ?>
+                                    <tr>
+                                    <?php foreach($radioAttr as $k=>$v):?>
+                                        <td align="center">
+
+                                           <select name="goods_attr[{$k}][]">
+                                                <option value="">请选择</option>
+                                                <?php foreach($v as $k1=>$v1):
+                                                    $arr=explode(',', $v0['goods_attr']);
+                                                    if(in_array($v1['id'], $arr)){
+                                                        $select='selected="selected"';
+                                                    }else{
+                                                        $select='';
+                                                    }
+                                                ?>    
+                                                <option <?php echo $select;?> value="<?php echo $v1['id'];?>"><?php echo $v1['attr_value'];?></option>
+                                                <?php endforeach;?>
+                                            </select>
+                                        </td>
+                                    <?php endforeach;?>
+                                    <td align="center">
+                                        <input type="text" name="goods_num[]" style="text-align: center; height: 30px;" value="<?php echo $v0['goods_num'];?>">
+                                    </td>
+                                    <td align="center">
+                                        <a onclick="addtr(this)" href="#" class="btn btn-sm btn-azure btn-addon"><?php if($k0==0){ echo '+'; }else{ echo '-'; }?></a>
+                                    </td>
+                                </tr>
+                                <?php endforeach; else:?>
+                                    <tr>
+                                    <?php foreach($radioAttr as $k=>$v):?>
+                                        <td align="center">
+                                            <select name="goods_attr[{$k}][]">
+                                                <option value="">请选择</option>
+                                                <?php foreach($v as $k1=>$v1):?>
+                                                <option value="<?php echo $v1['id'];?>"><?php echo $v1['attr_value'];?></option>
+                                                <?php endforeach;?>
+                                            </select>
+                                        </td>
+                                    <?php endforeach;?>
+                                    <td align="center">
+                                        <input type="text" name="goods_num[]" style="text-align: center; height: 30px;" value="">
+                                    </td>
+                                    <td align="center">
+                                        <a onclick="addtr(this)" href="#" class="btn btn-sm btn-azure btn-addon">+</a>
+                                    </td>
+                                </tr>
+                                <?php endif;?>
+                        </tbody>
+                    </table>
+                    </div>
+                        <div class="form-group" style="height: 10px; margin-top: 5px;">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">保存信息</button>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__admin__/style/jquery_002.js"></script>
+    <script src="__admin__/style/bootstrap.js"></script>
+    <script src="__admin__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__admin__/style/beyond.js"></script>
+    <script type="text/javascript">
+        function addtr(o){
+            var div=$(o).parent().parent();
+            if($(o).html() == '+'){
+                var newdiv=div.clone();    
+                newdiv.find('a').html('-');
+                div.after(newdiv);
+            }else{
+                div.remove();
+            }
+        }
+    </script>
+
+
+</body></html>

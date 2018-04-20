@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>shop - dumingzhi.com</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__admin__/style/bootstrap.css" rel="stylesheet">
+    <link href="__admin__/style/font-awesome.css" rel="stylesheet">
+    <link href="__admin__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__admin__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__admin__/style/demo.css" rel="stylesheet">
+    <link href="__admin__/style/typicons.css" rel="stylesheet">
+    <link href="__admin__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+	<!-- 头部 -->
+	{include file='common/top'}
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			<!-- Page Sidebar -->
+            {include file='common/left'}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{:url('index/index')}">系统</a>
+                    </li>
+                                        <li class="active">商品列表</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<button type="button" tooltip="添加商品" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '{:url('goods/add')}'"> <i class="fa fa-plus"></i> Add
+</button>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center" width="4%">ID</th>
+                                <th class="text-center">商品名称</th>
+                                <th class="text-center" width="10%">商品编码</th>
+                                <th class="text-center" width="8%">缩略图</th>
+                                <th class="text-center" width="6%">市场价</th>
+                                <th class="text-center" width="6%">本店价</th>
+                                <th class="text-center" width="6%">上架</th>
+                                <th class="text-center" width="6%">栏目</th>
+                                <th class="text-center" width="6%">品牌</th>
+                                <th class="text-center" width="6%">类型</th>
+                                <th class="text-center" width="4%">重量</th>
+                                <th class="text-center" width="4%">单位</th>
+                                <th class="text-center" width="6%">库存量</th>
+                                <th class="text-center" width="20%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {volist name='dbLst' id='vo'}
+                            <tr>
+                                <td align="center">{$vo.id}</td>
+                                <td align="center">{$vo.goods_name}</td>
+                                <td align="center">{$vo.goods_code}</td>
+                                <td align="center">
+                                    {if condition="$vo.or_thumb neq '' "}
+                                    <img src="__uploads__/{$vo.or_thumb}" height="30px">
+                                    {else/}
+                                    暂无
+                                    {/if}
+                                </td>
+                                <td align="center">{$vo.market_price}</td>
+                                <td align="center">{$vo.shop_price}</td>
+                                <td align="center">
+                                    {if condition="$vo.on_sale eq 1 "}
+                                    已上架
+                                    {else/}
+                                    未上架
+                                    {/if}
+                                </td>
+                                <td align="center">
+                                    {if condition="$vo.cate_name"}
+                                    {$vo.cate_name}
+                                    {else/}
+                                    暂无
+                                    {/if}
+                                </td>                                
+                                <td align="center">
+                                    {if condition="$vo.brand_name"}
+                                    {$vo.brand_name}
+                                    {else/}
+                                    暂无
+                                    {/if}
+                                </td>
+                                <td align="center">
+                                    {if condition="$vo.type_name"}
+                                    {$vo.type_name}
+                                    {else/}
+                                    暂无
+                                    {/if}
+                                </td>
+                                <td align="center">{$vo.goods_weight}</td>
+                                <td align="center">{$vo.weight_unit}</td>
+                                <td align="center">
+                                    {if condition="$vo.gn"}
+                                    {$vo.gn}
+                                    {else/}
+                                    0
+                                    {/if}
+                                </td>
+                                <td align="center">
+                                    <a href="{:url('goods/goodsnum',array('id'=>$vo['id']))}" class="btn btn-primary btn-sm shiny">
+                                        <i class="fa fa-list"></i> 库存
+                                    </a>
+                                    <a href="{:url('goods/edit',array('id'=>$vo['id']))}" class="btn btn-primary btn-sm shiny">
+                                        <i class="fa fa-edit"></i> 编辑
+                                    </a>
+                                    <a href="#" onClick="warning('确实要删除吗', '{:url('goods/del',array('id'=>$vo['id']))}')" class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+                            </tr>
+                            {/volist}
+                        </tbody>
+                    </table>
+                </div>
+                <div style="text-align: center; padding-top: 10px">
+                    {$dbLst->render()}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__admin__/style/jquery_002.js"></script>
+    <script src="__admin__/style/bootstrap.js"></script>
+    <script src="__admin__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__admin__/style/beyond.js"></script>
+    
+
+
+</body></html>
