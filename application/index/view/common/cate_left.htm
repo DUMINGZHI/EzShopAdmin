@@ -1,0 +1,33 @@
+<div class="article-side">
+            <dl class="article-menu">
+                <dt class="am-t"><a href="{:url('index/Cate/index')}">文章分类列表</a></dt>
+                <!-- 系统分类 -->
+                <dd class="am-c">
+                    <div class="menu-item active">
+                        <div class="item-hd"><a href="#">系统分类</a><i class="iconfont icon-down"></i></div>
+                            {if condition="$helpCates"}
+                            <ul class="item-bd">
+                                {volist name="helpCates" id="helpCates"}
+                                <li><a href="{:url('index/Cate/index',array('id'=>$helpCates['id']))}">{$helpCates.cate_name}</a></li>
+                                {/volist}
+                            </ul>
+                            {/if}
+                    </div>
+                </dd>
+                <!-- 普通分类 -->
+                <dd class="am-c">
+                    {volist name="comCates" id="comCates"}
+                    <div class="menu-item active">
+                        <div class="item-hd"><a href="{:url('index/Cate/index',array('id'=>$comCates['id']))}">{$comCates.cate_name}</a><i class="iconfont icon-down"></i></div>
+                        {if condition="$comCates['children']"}
+                        <ul class="item-bd">
+                            {volist name="comCates.children" id="childCate"}
+                            <li><a href="{:url('index/Cate/index',array('id'=>$childCate['id']))}">{$childCate.cate_name}</a></li>
+                            {/volist}
+                        </ul>
+                        {/if}
+                    </div>
+                    {/volist}
+                </dd>
+            </dl>
+</div>

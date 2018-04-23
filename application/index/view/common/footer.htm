@@ -1,104 +1,115 @@
- <div class="mui-mbar-tabs">
-    <div class="quick_link_mian" data-userid="62">
-        <div class="quick_links_panel">
-            <div id="quick_links" class="quick_links">
-                <ul>
-<li>
-    <a href="user.php"><i class="setting"></i></a>
-    <div class="ibar_login_box status_login">
-        <div class="avatar_box">
-            <p class="avatar_imgbox">
-            <img src="__index__/img/touxiang.jpg" width="100" height="100"/>
-        </p>
-            <ul class="user_info">
-                <li>用户名：86913361-232247</li>
-                <li>级&nbsp;别：铜牌</li>
-            </ul>
-        </div>
-        <div class="login_btnbox">
-            <a href="user.php?act=order_list" class="login_order">我的订单</a>
-            <a href="user.php?act=collection_list" class="login_favorite">我的收藏</a>
-        </div>
-        <i class="icon_arrow_white"></i>
-    </div>
-</li>
-
-<li id="shopCart">
-    <a href="javascript:void(0);" class="cart_list">
-        <i class="message"></i>
-        <div class="span">购物车</div>
-        <span class="cart_num">1</span>
-    </a>
-</li>
-<li>
-    <a href="javascript:void(0);" class="mpbtn_order"><i class="chongzhi"></i></a>
-    <div class="mp_tooltip">
-        <font id="mpbtn_money" style="font-size:12px; cursor:pointer;">我的订单</font>
-        <i class="icon_arrow_right_black"></i>
-    </div>
-</li>
-<li>
-    <a href="javascript:void(0);" class="mpbtn_yhq"><i class="yhq"></i></a>
-    <div class="mp_tooltip">
-        <font id="mpbtn_money" style="font-size:12px; cursor:pointer;">优惠券</font>
-        <i class="icon_arrow_right_black"></i>
-    </div>
-</li>
-<li>
-    <a href="javascript:void(0);" class="mpbtn_total"><i class="view"></i></a>
-    <div class="mp_tooltip" style=" visibility:hidden;">
-        <font id="mpbtn_myMoney" style="font-size:12px; cursor:pointer;">我的资产</font>
-        <i class="icon_arrow_right_black"></i>
-    </div>
-</li>
-<li>
-    <a href="javascript:void(0);" class="mpbtn_history"><i class="zuji"></i></a>
-    <div class="mp_tooltip">
-        <font id="mpbtn_histroy" style="font-size:12px; cursor:pointer;">我的足迹</font>
-        <i class="icon_arrow_right_black"></i>
-    </div>
-</li>
-<li>
-    <a href="javascript:void(0);" class="mpbtn_collection"><i class="wdsc"></i></a>
-    <div class="mp_tooltip">
-        <font id="mpbtn_wdsc" style="font-size:12px; cursor:pointer;">我的收藏</font>
-        <i class="icon_arrow_right_black"></i>
-    </div>
-</li>
-<li>
-    <a href="javascript:void(0);" class="mpbtn_email"><i class="email"></i></a>
-    <div class="mp_tooltip">
-        <font id="mpbtn_email" style="font-size:12px; cursor:pointer;">邮箱订阅</font>
-        <i class="icon_arrow_right_black"></i>
-    </div>
-</li>
-                </ul>
+ <div class="footer-new">
+    <div class="footer-new-top">
+    	<div class="w w1200">
+            <div class="service-list">
+<div class="service-item">
+    <i class="f-icon f-icon-qi"></i>
+    <span>七天包退</span>
+</div>
+<div class="service-item">
+    <i class="f-icon f-icon-zheng"></i>
+    <span>正品保障</span>
+</div>
+<div class="service-item">
+    <i class="f-icon f-icon-hao"></i>
+    <span>好评如潮</span>
+</div>
+<div class="service-item">
+    <i class="f-icon f-icon-shan"></i>
+    <span>闪电发货</span>
+</div>
+<div class="service-item">
+    <i class="f-icon f-icon-quan"></i>
+    <span>权威荣誉</span>
+</div>
             </div>
-            <div class="quick_toggle">
-                <ul>
-<li>
-    
-    
-    <a id="IM" IM_type="dsc" onclick="openWin(this)" href="javascript:;"><i class="kfzx"></i></a>
-        <div class="mp_tooltip">客服中心<i class="icon_arrow_right_black"></i></div>
-    
-</li>
-<li class="returnTop">
-    <a href="javascript:void(0);" class="return_top"><i class="top"></i></a>
-</li>
-                </ul>
-
+            <div class="contact">
+<div class="contact-item contact-item-first"><i class="f-icon f-icon-tel"></i><span>4000-000-000</span></div>
+<div class="contact-item">
+	    <a id="IM" im_type="dsc" onclick="openWin(this)" href="javascript:;" class="btn-ctn"><i class="f-icon f-icon-kefu"></i><span>咨询客服</span></a>
+    </div>
             </div>
         </div>
-        <div id="quick_links_pop" class="quick_links_pop"></div>
+    </div>
+    <div class="footer-new-con">
+    	<div class="fnc-warp">
+
+            <div class="help-list">
+                {volist name="helpCateRes" id="helpCateRes"}
+                <div class="help-item">
+                    <h3>{$helpCateRes.cate_name}</h3>
+                    <ul>
+                        {volist name="helpCateRes.arts" id="arts"}
+                        <li><a href="#">{$arts.title}</a></li>
+                        {/volist}
+                    </ul>
+                </div>
+                {/volist}
+            </div>
+
+
+
+            <div class="qr-code">
+<div class="qr-item qr-item-first">
+    <div class="code_img"><img src="__index__/img/ecjia_qrcode.png"></div>
+    <div class="code_txt">官方网址</div>
+</div>
+<div class="qr-item">
+    <div class="code_img"><img src="__index__/img/ectouch_qrcode.png"></div>
+    <div class="code_txt">在线课程</div>
+</div>
+            </div>
+    	</div>
+    </div>
+    <div class="footer-new-bot">
+    	<div class="w w1200">
+             
+            <p class="copyright_links">
+<a href="#">首页</a>
+ 
+<span class="spacer"></span>
+ 
+<a href="#">隐私保护</a>
+ 
+<span class="spacer"></span>
+ 
+<a href="#">联系我们</a>
+ 
+<span class="spacer"></span>
+ 
+<a href="#">免责条款</a>
+ 
+<span class="spacer"></span>
+ 
+<a href="#">公司简介</a>
+ 
+<span class="spacer"></span>
+ 
+<a href="#">意见反馈</a>
+ 
+ 
+            </p>
+        
+        <p><span>©&nbsp;2015-2017&nbsp;tongpankt.com&nbsp;版权所有&nbsp;&nbsp;</span><span>ICP备案证书号:</span><a href="#">豫ICP备*****号-1</a>&nbsp;<a href="#">POWERED by童攀课堂</a></p>
+        
+        <p class="copyright_auth">&nbsp;</p>
+    </div>
+    </div>
+    
+    
+    <div class="hide" id="pd_coupons">
+        <span class="success-icon m-icon"></span>
+        <div class="item-fore">
+            <h3>领取成功！感谢您的参与，祝您购物愉快~</h3>
+            <div class="txt ftx-03">本活动为概率性事件，不能保证所有客户成功领取优惠券</div>
+        </div>
+    </div>
+    
+    
+    <div class="hidden">
+        <input name="seller_kf_IM" value="" rev="" ru_id="" type="hidden">
+        <input name="seller_kf_qq" value="349488953" type="hidden">
+        <input name="seller_kf_tel" value="4000-000-000" type="hidden">
+        <input name="user_id" value="62" type="hidden">
     </div>
 </div>
-<div class="email_sub">
-    <div class="attached_bg"></div>
-    <div class="w1200">
-        <div class="email_sub_btn">
-            <input type="input" id="user_email" name="user_email" autocomplete="off" placeholder="请输入您的邮箱帐号">
-            <a href="javascript:void(0);" onClick="add_email_list();" class="emp_btn">订阅</a>
-        </div>
-    </div>
-</div>    
