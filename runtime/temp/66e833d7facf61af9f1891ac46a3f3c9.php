@@ -1,11 +1,11 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:60:"E:\xampp\htdocs\shop./application/index\view\index\index.htm";i:1524139464;s:65:"E:\xampp\htdocs\shop\application\index\view\common\index_head.htm";i:1524138364;s:60:"E:\xampp\htdocs\shop\application\index\view\common\right.htm";i:1524138499;s:61:"E:\xampp\htdocs\shop\application\index\view\common\footer.htm";i:1524139238;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:60:"E:\xampp\htdocs\shop./application/index\view\index\index.htm";i:1524404269;s:65:"E:\xampp\htdocs\shop\application\index\view\common\index_head.htm";i:1524138364;s:60:"E:\xampp\htdocs\shop\application\index\view\common\right.htm";i:1524397655;s:61:"E:\xampp\htdocs\shop\application\index\view\common\footer.htm";i:1524402711;}*/ ?>
 <!DOCTYPE html>
 <html><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="Keywords" content="dumingzhi.com" />
 <meta name="Description" content="dumingzhi.com" />
-<title>dumingzhi.com商城</title>
+<title>dumingzhi.com</title>
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="/shop/public/static/index/css/base.css">
 <link rel="stylesheet" type="text/css" href="/shop/public/static/index/css/style.css">
@@ -1279,154 +1279,7 @@ function return_cart_list(result)
 		}
 	</script>
 </div>	   
-	 <div class="footer-new">
-    <div class="footer-new-top">
-    	<div class="w w1200">
-            <div class="service-list">
-<div class="service-item">
-    <i class="f-icon f-icon-qi"></i>
-    <span>七天包退</span>
-</div>
-<div class="service-item">
-    <i class="f-icon f-icon-zheng"></i>
-    <span>正品保障</span>
-</div>
-<div class="service-item">
-    <i class="f-icon f-icon-hao"></i>
-    <span>好评如潮</span>
-</div>
-<div class="service-item">
-    <i class="f-icon f-icon-shan"></i>
-    <span>闪电发货</span>
-</div>
-<div class="service-item">
-    <i class="f-icon f-icon-quan"></i>
-    <span>权威荣誉</span>
-</div>
-            </div>
-            <div class="contact">
-<div class="contact-item contact-item-first"><i class="f-icon f-icon-tel"></i><span>4000-000-000</span></div>
-<div class="contact-item">
-	    <a id="IM" im_type="dsc" onclick="openWin(this)" href="javascript:;" class="btn-ctn"><i class="f-icon f-icon-kefu"></i><span>咨询客服</span></a>
-    </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-new-con">
-    	<div class="fnc-warp">
-            <div class="help-list">
-<div class="help-item">
-    <h3>新手上路 </h3>
-    <ul>
-            <li><a href="#">售后流程</a></li>
-<li><a href="#">购物流程</a></li>
-<li><a href="#">订购方式</a></li>
-    </ul>
-
-</div>
-<div class="help-item">
-    <h3>配送与支付 </h3>
-    <ul>
-            <li><a href="#">货到付款区域</a></li>
-<li><a href="#">配送支付智能查询</a></li>
-<li><a href="#">支付方式说明</a></li>
-    </ul>
-
-</div>
-<div class="help-item">
-    <h3>会员中心</h3>
-    <ul>
-            <li><a href="#">资金管理</a></li>
-<li><a href="#">我的收藏</a></li>
-<li><a href="#">我的订单</a></li>
-            </ul>
-
-</div>
-<div class="help-item">
-    <h3>服务保证 </h3>
-    <ul>
-            <li><a href="#">退换货原则</a></li>
-<li><a href="#">售后服务保证</a></li>
-<li><a href="#">产品质量保证</a></li>
-            </ul>
-
-</div>
-<div class="help-item">
-    <h3>联系我们 </h3>
-    <ul>
-            <li><a href="#">网站故障报告</a></li>
-<li><a href="#">选机咨询</a></li>
-<li><a href="#">投诉与建议</a></li>
-            </ul>
-
-</div>
-  
-            </div>
-            <div class="qr-code">
-<div class="qr-item qr-item-first">
-    <div class="code_img"><img src="/shop/public/static/index/img/ecjia_qrcode.png"></div>
-    <div class="code_txt">官方网址</div>
-</div>
-<div class="qr-item">
-    <div class="code_img"><img src="/shop/public/static/index/img/ectouch_qrcode.png"></div>
-    <div class="code_txt">在线课程</div>
-</div>
-            </div>
-    	</div>
-    </div>
-    <div class="footer-new-bot">
-    	<div class="w w1200">
-             
-            <p class="copyright_links">
-<a href="#">首页</a>
- 
-<span class="spacer"></span>
- 
-<a href="#">隐私保护</a>
- 
-<span class="spacer"></span>
- 
-<a href="#">联系我们</a>
- 
-<span class="spacer"></span>
- 
-<a href="#">免责条款</a>
- 
-<span class="spacer"></span>
- 
-<a href="#">公司简介</a>
- 
-<span class="spacer"></span>
- 
-<a href="#">意见反馈</a>
- 
- 
-            </p>
-        
-        <p><span>©&nbsp;2015-2017&nbsp;tongpankt.com&nbsp;版权所有&nbsp;&nbsp;</span><span>ICP备案证书号:</span><a href="#">豫ICP备*****号-1</a>&nbsp;<a href="#">POWERED by童攀课堂</a></p>
-        
-        <p class="copyright_auth">&nbsp;</p>
-    </div>
-    </div>
-    
-    
-    <div class="hide" id="pd_coupons">
-        <span class="success-icon m-icon"></span>
-        <div class="item-fore">
-            <h3>领取成功！感谢您的参与，祝您购物愉快~</h3>
-            <div class="txt ftx-03">本活动为概率性事件，不能保证所有客户成功领取优惠券</div>
-        </div>
-    </div>
-    
-    
-    <div class="hidden">
-        <input name="seller_kf_IM" value="" rev="" ru_id="" type="hidden">
-        <input name="seller_kf_qq" value="349488953" type="hidden">
-        <input name="seller_kf_tel" value="4000-000-000" type="hidden">
-        <input name="user_id" value="62" type="hidden">
-    </div>
-</div>
-    <div class="mui-mbar-tabs">
+	 <div class="mui-mbar-tabs">
     <div class="quick_link_mian" data-userid="62">
         <div class="quick_links_panel">
             <div id="quick_links" class="quick_links">
@@ -1530,6 +1383,121 @@ function return_cart_list(result)
         </div>
     </div>
 </div>    
+    <div class="footer-new">
+    <div class="footer-new-top">
+    	<div class="w w1200">
+            <div class="service-list">
+<div class="service-item">
+    <i class="f-icon f-icon-qi"></i>
+    <span>七天包退</span>
+</div>
+<div class="service-item">
+    <i class="f-icon f-icon-zheng"></i>
+    <span>正品保障</span>
+</div>
+<div class="service-item">
+    <i class="f-icon f-icon-hao"></i>
+    <span>好评如潮</span>
+</div>
+<div class="service-item">
+    <i class="f-icon f-icon-shan"></i>
+    <span>闪电发货</span>
+</div>
+<div class="service-item">
+    <i class="f-icon f-icon-quan"></i>
+    <span>权威荣誉</span>
+</div>
+            </div>
+            <div class="contact">
+<div class="contact-item contact-item-first"><i class="f-icon f-icon-tel"></i><span>4000-000-000</span></div>
+<div class="contact-item">
+	    <a id="IM" im_type="dsc" onclick="openWin(this)" href="javascript:;" class="btn-ctn"><i class="f-icon f-icon-kefu"></i><span>咨询客服</span></a>
+    </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-new-con">
+    	<div class="fnc-warp">
+
+            <div class="help-list">
+                <?php if(is_array($helpCateRes) || $helpCateRes instanceof \think\Collection || $helpCateRes instanceof \think\Paginator): $i = 0; $__LIST__ = $helpCateRes;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$helpCateRes): $mod = ($i % 2 );++$i;?>
+                <div class="help-item">
+                    <h3><?php echo $helpCateRes['cate_name']; ?></h3>
+                    <ul>
+                        <?php if(is_array($helpCateRes['arts']) || $helpCateRes['arts'] instanceof \think\Collection || $helpCateRes['arts'] instanceof \think\Paginator): $i = 0; $__LIST__ = $helpCateRes['arts'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$arts): $mod = ($i % 2 );++$i;?>
+                        <li><a href="#"><?php echo $arts['title']; ?></a></li>
+                        <?php endforeach; endif; else: echo "" ;endif; ?>
+                    </ul>
+                </div>
+                <?php endforeach; endif; else: echo "" ;endif; ?>
+            </div>
+
+
+
+            <div class="qr-code">
+<div class="qr-item qr-item-first">
+    <div class="code_img"><img src="/shop/public/static/index/img/ecjia_qrcode.png"></div>
+    <div class="code_txt">官方网址</div>
+</div>
+<div class="qr-item">
+    <div class="code_img"><img src="/shop/public/static/index/img/ectouch_qrcode.png"></div>
+    <div class="code_txt">在线课程</div>
+</div>
+            </div>
+    	</div>
+    </div>
+    <div class="footer-new-bot">
+    	<div class="w w1200">
+             
+            <p class="copyright_links">
+<a href="#">首页</a>
+ 
+<span class="spacer"></span>
+ 
+<a href="#">隐私保护</a>
+ 
+<span class="spacer"></span>
+ 
+<a href="#">联系我们</a>
+ 
+<span class="spacer"></span>
+ 
+<a href="#">免责条款</a>
+ 
+<span class="spacer"></span>
+ 
+<a href="#">公司简介</a>
+ 
+<span class="spacer"></span>
+ 
+<a href="#">意见反馈</a>
+ 
+ 
+            </p>
+        
+        <p><span>©&nbsp;2015-2017&nbsp;tongpankt.com&nbsp;版权所有&nbsp;&nbsp;</span><span>ICP备案证书号:</span><a href="#">豫ICP备*****号-1</a>&nbsp;<a href="#">POWERED by童攀课堂</a></p>
+        
+        <p class="copyright_auth">&nbsp;</p>
+    </div>
+    </div>
+    
+    
+    <div class="hide" id="pd_coupons">
+        <span class="success-icon m-icon"></span>
+        <div class="item-fore">
+            <h3>领取成功！感谢您的参与，祝您购物愉快~</h3>
+            <div class="txt ftx-03">本活动为概率性事件，不能保证所有客户成功领取优惠券</div>
+        </div>
+    </div>
+    
+    
+    <div class="hidden">
+        <input name="seller_kf_IM" value="" rev="" ru_id="" type="hidden">
+        <input name="seller_kf_qq" value="349488953" type="hidden">
+        <input name="seller_kf_tel" value="4000-000-000" type="hidden">
+        <input name="user_id" value="62" type="hidden">
+    </div>
+</div>
 <script type="text/javascript" src="/shop/public/static/index/js/suggest.js"></script><script type="text/javascript" src="/shop/public/static/index/js/scroll_city.js"></script><script type="text/javascript" src="/shop/public/static/index/js/utils.js"></script>
 <script type="text/javascript" src="/shop/public/static/index/js/warehouse.js"></script><script type="text/javascript" src="/shop/public/static/index/js/warehouse_area.js"></script>
     
