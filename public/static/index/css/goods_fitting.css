@@ -1,0 +1,121 @@
+/*商品详情页组合购买弹出框*/
+.tm-dl-overlay{ position:absolute;display:none; z-index: 10000; width: 990px; height: 550px; left:50%; top: 50%; margin:-275px 0 0 -495px; position:fixed;}
+.tm-dl-overlay-mask {background-color:#000;opacity:0.5;filter:alpha(opacity=50); width: 100%; left: 0px; top: 0px; position: fixed; -moz-user-select: none; z-index: 9999; height: 100%; display:none;}
+.tm-dl-overlay-content {background-color:#fff}
+.tm-dl-overlay-close {position:absolute;right:-40px;top:0;background:url(../images/common/fittings_close.png) no-repeat; width:40px;height:40px;color:#fff;text-align:center;text-decoration:none;}
+.tm-dl-overlay-close:hover {position:absolute;right:-40px;top:0;background:url(../images/common/fittings_close.png) no-repeat; width:40px;height:40px;color:#fff;text-align:center;text-decoration:none}
+.tm-dl-overlay-close b { height:2px;border:4px solid #f16a68;position:absolute;left:-4px;border-left-width:0;border-top-color:#fff;border-bottom-color:#fff;font-size:0;top:14px}
+.tm-dl-overlay-close:hover b {border:4px solid #f16a68;position:absolute;left:-4px;border-left-width:0;border-top-color:#fff;border-bottom-color:#fff;font-size:0;top:14px}
+.tm-dl-overlay-close i {font-style:normal;font-size:16px;line-height:40px;text-align:center}
+.tm-dl-overlay-close:hover i {font-style:normal;font-size:30px;line-height:40px;text-align:center}
+
+.goods_fittings_main .header{ padding:10px 20px; background-color:#fff;}
+.goods_fittings_main .header:after{ content: ' '; display: block; clear: both; height: 0; visibility: hidden;}
+
+.goods_fittings_main .header .tm-combo-mitem,
+.goods_fittings_main .header .tm-combo-item{ float:left; position:relative;}
+
+.goods_fittings_main .header .tm-img{ width:58px; height:58px; text-align:center; border:1px solid #d2d2d2;}
+.goods_fittings_main .header .tm-img a{ width:58px; height:58px; line-height:58px; display:block; text-align:center;}
+.goods_fittings_main .header .tm-img img{ vertical-align:middle; max-width:100%; max-height:100%; display:block;}
+
+.goods_fittings_main .header .tm-enable{ position:absolute; width:13px; height:13px; top:46px; right:0; background:#fff url(../images/check/checkbox-icon.png) no-repeat; cursor:pointer}
+.goods_fittings_main .header .tm-enable i{ font-style:normal; color:#fff; font-size:12px; text-align:center; display:none;}
+.goods_fittings_main .header .tm-enable.selected{ background: url(../images/check/checked-icon.png) no-repeat;}
+
+.goods_fittings_main .header .tm-combo-spliter{ float:left; line-height:60px; font-size:16px; margin:0 10px;}
+
+.goods_fittings_main .header .slideBox{ width:auto; max-width:300px; overflow:hidden; position:relative; float:left; margin-right:20px;}
+.goods_fittings_main .header .slideBox .bd{ width:auto; max-width:320px; overflow:hidden;}
+.goods_fittings_main .header .slideBox .bd ul li{ width:60px; float:left; margin-right:20px;}
+
+.goods_fittings_main .header .slideBox .prev,
+.goods_fittings_main .header .slideBox .next{ position:absolute; top:18px; color:#0000FF;}
+.goods_fittings_main .header .slideBox .prev{ left:0;}
+.goods_fittings_main .header .slideBox .next{ right:0;}
+.goods_fittings_main .header .slideBox .prevStop,
+.goods_fittings_main .header .slideBox .nextStop{ display:none;}
+
+.goods_fittings_main .header .slideBox:hover .hd a{ display:block;}
+
+.goods_fittings_main .header .tm-combo-info{ float:left;}
+.goods_fittings_main .header .tm-combo-info p{ height:20px; line-height:20px;}
+.goods_fittings_main .header .tm-combo-info p s{ text-decoration:none;}
+
+.goods_fittings_main .header .tm-combo-info .tm-combo-price { color:#f42424; display:inline-block; *display:inline; *zoom:1; font-size:12px;}
+.goods_fittings_main .header .tm-combo-info .tm-combo-price i { font-style:normal; font-size:16px;}
+.goods_fittings_main .header .tm-combo-info .tm-combo-price s {font-size:16px;}
+
+.goods_fittings_main .header .tm-combo-info .tm-save-price { display:inline-block; *display:inline; *zoom:1; background-color:#333; color:#fff; padding:1px 3px; font-size:14px; height:18px; line-height:18px; position:relative; margin-left:4px;}
+.goods_fittings_main .header .tm-combo-info .tm-save-price b { position:absolute; width:0; height:0; border-left-color:transparent; font-size:0; border-bottom:6px solid #333; border-left:6px solid #fff; left:-6px; bottom:0}
+.goods_fittings_main .header .tm-combo-info .tm-save-price i { font-family:arial, verdana, sans-serif!important; font-style:normal;}
+
+.goods_fittings_main .header .tm-combo-info .tm-original-price s{ color:#999}
+
+.goods_fittings_main .header .tm-combo-warnning { display:none; color:#f42424; margin-top:20px; line-height:20px; float:left; margin-left:10px;}
+
+.goods_fittings_main .header.warnning {background-color:#ffe159;}
+.goods_fittings_main .header.warnning .tm-combo-warnning {display:block;}
+.goods_fittings_main .header.warnning .tm-combo-info {display:none;}
+
+.goods_fittings_main .tm-combo-content{ height:360px; overflow:hidden; position:relative;}
+
+.goods_fittings_main .body{ padding-left:20px; background-color:#f5f5f5; *zoom:1;}
+.goods_fittings_main .body:after{ content: ' '; display: block; clear: both; height: 0; visibility: hidden;}
+.goods_fittings_main .body .title{ line-height:50px; color:#666;}
+
+.goods_fittings_main .body .tm-combo-item{ float:left;position:relative;*zoom:1;background-color:#fff;width:455px;margin-right:15px;margin-bottom:20px;border:1px solid #fff;}
+.goods_fittings_main .body .tm-combo-item:after{ content: ' '; display: block; clear: both; height: 0; visibility: hidden;}
+
+.goods_fittings_main .body .tm-combo-item .tm-img{float:left; width:60px; margin:10px; text-align:center; border:1px solid #dcdcdc;}
+.goods_fittings_main .body .tm-combo-item .tm-amount{ position:absolute; width:60px; text-align:center; line-height:20px; height:20px; bottom:0; left:10px; color:#fff;}
+.goods_fittings_main .body .tm-combo-item .tm-amount span{ z-index:2; position:relative}
+.goods_fittings_main .body .tm-combo-item .tm-amount i{ width:100%; height:100%; background-color:#000; opacity:.5; filter:Alpha(opactiy=50); display:block; position:absolute; left:0; top:0; z-index:1;}
+
+.goods_fittings_main .body .tm-combo-item .tm-meta{ float:left; width:372px; padding-bottom:5px;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dl{ padding-bottom:4px; padding-top:4px; line-height:20px; *zoom:1;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dl:after{ content: ' '; display: block; clear: both; height: 0; visibility: hidden;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dt{ width:70px; text-align:right; float:left;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dl.tb-prop dt{ line-height:30px;}
+
+.goods_fittings_main .body .tm-combo-item .tm-meta dd{ width:280px; float:left; margin-left:10px;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dd .tm-goods-name{ height:40px; line-height:20px; overflow:hidden; display:block;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dd ul{ margin-top:-10px;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dd li{ float:left; border:1px solid #d2d2d2; padding:2px; margin:10px 10px 0 0; position:relative;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dd li:last-child{ margin-right:0;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dd li.selected,.goods_fittings_main .body .tm-combo-item .tm-meta dd li:hover{border-color: #f42424;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dd li b{ position: absolute;bottom: 0;right: 0;display: none;width: 15px;height: 15px;background: url(../images/dsc-icon.png) 0 0 no-repeat;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dd li.selected b{ display:block;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dd li a{ display:block; overflow:hidden;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dd li a:hover{ color:#555;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dd li a img,.goods_fittings_main .body .tm-combo-item .tm-meta dd li a i{ float:left;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dd li a i{ padding:0 10px; line-height:24px;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dd li b{ position:absolute; bottom:0; right:0; display:none; width:15px; height:15px; background:url(../images/dsc-icon.png) 0 0 no-repeat;}
+.goods_fittings_main .body .tm-combo-item .tm-meta dd li .fitt_spec_value{ display:none;}
+
+.goods_fittings_main .body .tm-combo-item .tm-meta .tb-service a {background-repeat:no-repeat;padding-left:22px;background-position:5px center}
+.goods_fittings_main .body .tm-combo-item .tm-notice {display:none}
+
+.goods_fittings_main .body .tm-combo-item.hover {border:1px dashed red;position:relative}
+.goods_fittings_main .body .tm-combo-item.hover .tm-notice {position:absolute;right:0;top:0;z-index:1;background-color:#f42424;color:#fff;padding:2px 4px;display:block}
+
+.goods_fittings_main .body .notic{ height:360px; line-height:360px; text-align:center; font-size:16px; color:#f42424;}
+
+.goods_fittings_main .footer {*zoom:1;height:70px;width:100%;background-color:#000;color:#999; margin:0;}
+.goods_fittings_main .footer:after {display:block;clear:both;height:0;content:' '}
+.goods_fittings_main .footer .tm-delivery {float:left;color:#999;line-height:60px;margin-left:30px}
+.goods_fittings_main .footer .tm-delivery .tb-deliveryAdd {margin:0 5px}
+.goods_fittings_main .footer .tm-delivery .mui_addr_tri {margin:0 5px}
+.goods_fittings_main .footer .tm-delivery .mui_addr_tri .mui_addr_icon {font-family:tm-detail-font;font-style:normal;position:relative;z-index:1}
+.goods_fittings_main .footer .tm-delivery .mui_addr_tri .mui_addr_tri_1 {color:#fff;padding-right:12px;cursor:pointer;background:0 0;border:0;position:relative;z-index:2}
+.goods_fittings_main .footer .tm-delivery .mui_addr_tri .mui_addr_tri_2 {color:#fff;padding-right:12px;cursor:pointer;background:0 0;border:0;position:relative;z-index:2}
+.goods_fittings_main .footer .tm-buy {float:right;margin:10px;line-height:40px;position:relative;z-index:1}
+.goods_fittings_main .footer .tm-buy .tm-combo-totalPrice{ margin-left:20px;}
+.goods_fittings_main .footer .tm-buy .tm-combo-totalPrice i {font-family:arial, verdana, sans-serif!important;font-style:normal;font-weight:bolder;color:#f42424}
+.goods_fittings_main .footer .tm-buy .tm-combo-totalPrice s {text-decoration:none;font-weight:bolder;font-size:18px;color:#f42424; margin-right:5px;position: relative;top: 2px;}
+.goods_fittings_main .footer .tm-buy .tm-combo-totalPrice s em{ font-size:12px;}
+.goods_fittings_main .footer .tm-buy input {width:35px;line-height:20px;margin:0 5px; height:20px;}
+.goods_fittings_main .footer .tm-buy button {line-height:40px;background-color:#f42424;overflow:visible;border:0;color:#fff;padding:0 15px;border-radius:1px;cursor:pointer; outline:0;}
+.goods_fittings_main .footer .tm-buy button.disabled {background-color:#818181}
+
+.goods_fittings_main .footer .tm-combo-notice{ background-color:#fee; color:#f42424; border:1px solid #f9b3ac; float:left; height:30px; line-height:30px; padding:0 20px; margin:18px 0 0 20px; display:none;}

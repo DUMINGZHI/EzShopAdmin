@@ -1,0 +1,158 @@
+/*对比悬浮框*/
+.duibi_box{ position: fixed;bottom: 10px;left:353px;z-index: 9999;width: 996px;height: 118px;-webkit-box-shadow: 0 0 10px 0 rgba(205,119,35,.4);-moz-box-shadow: 0 0 10px 0 rgba(205,119,35,.4);box-shadow: 0 0 10px 0 rgba(205,119,35,.4); display:none;}
+.duibi_box .parHd{ position: relative; height:28px;border-bottom: 2px solid #f68a00;}
+.duibi_box .parHd ul{ height: 32px;border: 1px solid #ddd;border-bottom: 2px solid #f68a00;}
+.duibi_box .parHd ul li{float: left;position: relative;width: 80px;height: 30px;line-height: 30px;text-align: center;font: 14px/30px 'microsoft yahei'; cursor:pointer}
+.duibi_box .parHd ul li.on{ position: relative;left: -1px;margin-top: -4px;height: 36px;background: #fff;border: 2px solid #f68a00;border-bottom: 0; color: #f68a00;}
+.duibi_box .parHd .operate { width: auto; padding:0 12px;height: 28px;line-height: 28px;border: 2px solid #f68a00; border-bottom:0; background:#fff; position:absolute; right:0; z-index:999;}
+.duibi_box .parHd .operate  a{color: #438cde;}
+.duibi_box .parTit{ float:left; width:12px; font-size:14px; color:#fff; background:#ff8f22; padding:27px 12px 28px;*padding:30px 12px 29px;font-family:"microsoft yahei";}
+.duibi_box .parBd {border: 2px solid #f68a00;position:relative;background: #fff; overflow:hidden;width:956px; float:left;}
+.duibi_box .parBd div.diff-items {color: #ccc;height: 62px;overflow: hidden; padding:26px 0; float:left; }
+.duibi_box .parBd div.diff-items dl{float: left;overflow: hidden;border-right: 1px solid #bfbfbf;height: 62px; padding:0 16px 0 20px;}
+.duibi_box .parBd div.diff-items dl dt{float: left;margin-right: 10px;width: 60px;height: 60px;text-align: center;color: #ccc;overflow: hidden;}
+.duibi_box .parBd div.diff-items dl dt h1{font: 36px/48px arial; text-align:center; line-height:62px;}
+.duibi_box .parBd div.diff-items dl dd{float: left;width: 100px;}
+.duibi_box .parBd div.diff-items dl dd .ts{ display:block; height:62px; line-height:62px; margin-left:-10px;}
+.duibi_box .parBd a.diff-item-name {height: 3em;line-height: 1.5em;overflow: hidden;display: block;color: #333;}
+.duibi_box .parBd .p-org{ margin-top:8px; overflow:hidden;}
+.duibi_box .parBd .p-org .p-price{ padding-top:0; font-size:12px; color:#999; float:left;}
+.duibi_box .parBd .del-comp-item{ display:block; color: #3a78bf; float:right; margin-right:5px; cursor:pointer;}
+.duibi_box .parBd .del-comp-item:hover{ color:#f42424;}
+.diff-operate a{color: #438cde; display:block; cursor:pointer;}
+.duibi_box .parBd .diff-operate { width: 128px;text-align: center; float:left;padding: 26px 0;height: 62px;} 
+.duibi_box .compare-active input{ height:30px; line-height:30px; border:1px solid #f42424; background:#f42424; color:#fff; padding:0 12px;font-family:"microsoft yahei"; font-size:14px; cursor:pointer; outline:0;}
+.duibi_box  span.no-prev, .duibi_box  #sc-prev.disabled {background-position: 0 -100px;cursor: default;}
+.duibi_box .scroll-item {position: relative;height: 90px;} 
+.duibi_box .scroll-item {padding: 6px 10px;_padding: 10px;}
+.duibi_box .sb-prev {float: left;background-position: 0 0;} 
+.duibi_box  .sb-next {float: right;background-position: -16px 0;}
+.duibi_box  .sb-next li {float: left;height: 84px;overflow: hidden;}
+.duibi_box .sNext{position:absolute; right:12px; top:36px;background-position: -16px 0;}
+.duibi_box .sPrev{position:absolute; left:12px; top:36px;background-position: 0 0;}
+.duibi_box .scroll-btn {z-index: 10;width: 14px;height: 50px;text-indent: -9999px;overflow: hidden;cursor: pointer;background-image: url(../images/duibi-arr.png);background-repeat: no-repeat;}
+.duibi_box .btn-compare-s{float: left;width: 58px;height: 21px;background: url(../images/duibi-btns.png) 0 0px no-repeat;overflow: hidden;line-height: 100px;margin-right: 10px;}
+.duibi_box .btn-compare-s_red{float: left;width: 58px;height: 21px;background: url(../images/duibi-btns.png) 0 -23px no-repeat;_background: url(../images/duibi-btns.png) 0 -24px no-repeat;overflow: hidden;line-height: 100px;margin-right: 10px;}
+
+/*#compareLink,#compareLink_on{ border:1px #ddd solid; background:none; color:#333; display: inline-block; cursor:pointer; padding:0 3px; text-decoration:none;-moz-border-radius: 2px;
+-webkit-border-radius: 2px;border-radius: 2px;float:left; margin-left:20px;}
+#compareLink label,#compareLink_on label{ cursor:pointer; display:inline-block; height:30px; line-height:30px;}*/
+/*对比悬浮框end*/
+
+/*.suggestions_box{width:448px; background:white; border:1px solid #ec5151; position: absolute; z-index: 99999; border-top:none; padding:0 5px; left:0px;}
+.suggestions_box .suggestions_list ul li{height:25px; line-height: 25px; clear:both;}
+.suggestions_box .suggestions_list ul li .left-span{ width:350px; height:28px; overflow:hidden; float:left;}
+.suggestions_box .suggestions_list ul li .suggest_span{float: right;}*/
+
+/* 列表页对比栏 start */
+.slideTxtBox_c { font-family:"宋体" ; font-size:12px;}
+.slideTxtBox_c .hd{ height:30px; line-height:30px; border:1px solid #e8e9ed;  border-bottom: none;  position:relative; }
+.slideTxtBox_c .hd ul{ float:left;  position:absolute; left:-1px; top:-1px; height:32px; width:700px;  }
+.slideTxtBox_c .hd  span{ float:right; display:block; width:60px; height:32px; text-align:center; }
+.slideTxtBox_c .hd  span a{ color:#7ab80e;}
+.slideTxtBox_c .hd ul li{ float:left; padding:0 40px; cursor:pointer; color:#666c78;}
+.slideTxtBox_c .hd ul li.on{ height:30px;  background:#fff; border:1px solid #7bb80f; color:#7ab80e; }
+.slideTxtBox_c .bd { border:1px solid #7bb80f;height:118px;  }
+.slideTxtBox_c .bd #compare_ul{padding:12px 0;  zoom:1; height:96px; float:left;  }
+.root61 .slideTxtBox_c .bd #compare_ul li{width:199px;}
+.slideTxtBox_c .bd  #compare_ul li{ width:140px; border-right:1px dashed #7ab80e; float:left; height:90px; padding-left:10px;   }
+.root61 .slideTxtBox_c .bd  #compare_ul li .img {width:86px;}
+.slideTxtBox_c .bd  #compare_ul li .img{ width:60px; float:left; text-align:center; padding-top:15px;}
+.root61 .slideTxtBox_c .bd li .text{width:96px;}
+.slideTxtBox_c .bd #compare_ul li .text{ width:76px; float:left;}
+.slideTxtBox_c .bd #compare_ul li .text .name{ color:#4a4957; padding-bottom:5px; height:46px; line-height:23px; overflow:hidden;}
+.slideTxtBox_c .bd #compare_ul li .text .price{ font-family:"微软雅黑"; color:#7ab80e}
+.slideTxtBox_c .bd #compare_ul li .img span{ font-family:"微软雅黑"; color:#cccccc; font-size:29px; }
+.root61 .slideTxtBox_c .bd #compare_ul .f_l{ width:70px;}
+.slideTxtBox_c .bd #compare_ul .f_l{ padding:13px 0 0 20px; width:70px; text-align:center; float:left; border-right:none;}
+.slideTxtBox_c .bd #compare_ul .f_l .duibi{ padding-bottom:10px; height:32px; width:67px;}
+.slideTxtBox_c .bd #compare_ul .f_l .duibi a{ width:67px; height:32px; background:url(images/duibi.gif) no-repeat; display:block; text-indent:-99999px;}
+.slideTxtBox_c .bd  #compare_ul.f_l .duibi a:hover{background:url(images/duibi_on.gif) no-repeat; display:block;}
+.root61 .slideTxtBox_c .bd li  #history_list .xm-goods-sublist{width:199px;}
+.slideTxtBox_c .bd li  #history_list .xm-goods-sublist{ border-right:1px dashed #7ab80e; float:left; height:90px;  margin-top:12px; }
+.root61 .slideTxtBox_c .bd li  #history_list ul li .item-thumb{ width:86px;}
+.slideTxtBox_c .bd li  #history_list ul li .item-thumb{ width:60px; float:left; text-align:center; padding-top:15px; position:static;}
+.slideTxtBox_c .bd li  #history_list ul li .item-name{ width:60px; float:left; color:#4a4957; padding-top:20px; height:30px; line-height:15px; overflow:hidden; padding-left:0px;}
+.root61 .slideTxtBox_c .bd li  #history_list ul li .item-name{width:96px;  }
+.root61 .slideTxtBox_c .bd li  #history_list ul li .item-price{width:96px; font-family: "微软雅黑";
+color: #7ab80e;}
+.slideTxtBox_c .bd li  #history_list ul li .item-price{width:76px; float:left; color:#4a4957; padding-bottom:5px; height:23px; line-height:23px; overflow:hidden; padding-left:10px;}
+.slideTxtBox_c .bd li  #history_list .xm-goods-sublist li { border-right:none; border-bottom:none; height:90px; padding:0;}
+.slideTxtBox_c .bd   #clear_history{border-right:none; padding-top:30px; width:70px; float:right;}
+/*比较结果页*/
+#pcomprare {
+margin-bottom: 10px; font-size:12px; font-family:"宋体"; color:#666666; border:1px solid #d5e8f2}
+#pcomprare .tab{ height:37px; line-height:37px; background:#eef6fd; border-top:1px solid #fff;}
+#pcomprare .tab li{float:left;display:block;width:280px;height:39px;margin-left:10px;text-align:left;color:#666666;}
+#pcomprare .tab  .f_l input {width: 13px;height: 13px;margin: 12px 4px 0 14px;padding: 0;display: inline;float: left;}
+#pcomprare .tab  .f_l span{ color:#333}
+/*tb-1*/
+.root61 .tb-1{width:948px;}
+.tb-1{width:708px;margin-top:-1px;border-collapse:collapse;}
+.tb-1 th,.tb-1 td{padding:8px 10px;border:1px solid #d5e8f2;line-height:20px;word-wrap:break-word;}
+.tb-1 th{width:89px;text-align: center;font-weight:normal;color:#666; border-left:none; background:#eef6fd;}
+.tb-1 td{overflow:hidden;width:187px;text-align:center;vertical-align:top;}
+.tb-1 thead tr{background:#eef6fd }
+.tb-1 .qian{ width:16px; height:9px;}
+.tb-1 thead th{font-size:14px;color:#c00; font-weight:bold; }
+.tb-1 thead td{background:#eef6fd; }
+.canshu{ height:38px; line-height:38px; background:#eef6fd; }
+.tb-1 tbody tr.differ{background:#EBFBE2;}
+.tb-1 tbody tr.hover{background:#F7F7F7;}
+.tb-1 tbody .no-contrast{padding:70px 0px 5px;text-align:center;font-family:"微软雅黑";font-size:25px;color:#ccc;}
+.tb-1 tbody .add-contrast{text-align:center;}
+.tb-1 tbody .p-price td{font-family:verdana;font-size:15px;font-weight:bold;color:#cc0000;font-family:"微软雅黑";}
+.tb-1 tbody .brand td{color:#005EA7;}
+.tb-1 .inner{width:250px;background:#fff;line-height:22px;}
+.tb-1 .inner caption{background:#F7F7F7;font-weight:bold;text-align:center;color:#333;}
+.tb-1 .inner th,.tb-1 .inner td{padding:0px;border:none;text-align:left;}
+.tb-1 .inner th{width:80px;padding:0px;font-weight:normal;color:#999;}
+.tb-1 .inner td{width:170px;color:#333;}
+.tb-1 a:link,.tb-1 a:visited{color:#0368a8;}
+.tb-1 a:hover{color:#ff6f3d;}
+.tb-1 span,.tb-1 span a:link,.tb-1 span a:visited{color:#0368a8;}
+.nobor tbody th,.nobor tbody td{ border-width:0px 1px 0px 0px;}
+/* ======商品比较浮动块 ====== */
+#compareBox {
+ width:128px;
+ 
+ background-color:#edf8ff;
+ padding:35px 0 8px 0;
+ border: 1px solid #c5e4ff;
+ position: absolute;
+ right:1px;
+ top:200px;
+ display:none;
+}
+
+#compareBox input {
+    width:52px; height:13px;
+    border:none;
+    background:url(images/compareSub.gif) no-repeat;
+}
+
+#compareList {
+ margin:0px 0px 8px 0px;
+ padding:0px;
+ width:120px;
+ background:#FFFFFF;
+ border:1px solid #d6ecff;
+}
+
+#compareList li {
+ color: #333;
+ text-align:left;
+ background: #fff;
+ padding: 3px 5px;
+ margin: 3px 0;
+}
+
+#compareList li img {
+ float:right;
+ padding-top:4px;
+}
+
+.compare-active{ margin-top:6px;}
+.del-items{ display:block; margin-top:8px;}
+.hide-me{ position:absolute; top:5px; right:5px;}
+/* 列表页对比栏 end */
