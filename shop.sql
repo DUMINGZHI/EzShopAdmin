@@ -80,7 +80,7 @@ CREATE TABLE `brand` (
 -- ----------------------------
 -- Records of brand
 -- ----------------------------
-INSERT INTO `brand` VALUES ('1', '杜鸣志', 'www.dumingzhi.com', '20180320\\699dfccc484add5231192c4308da9347.jpg', '杜鸣志是我', '50', '1');
+INSERT INTO `brand` VALUES ('1', '123', 'www.dumingzhi.com', '20180320\\699dfccc484add5231192c4308da9347.jpg', '123是我', '50', '1');
 INSERT INTO `brand` VALUES ('2', ' 百度', 'www.baidu.com', '20180320\\699dfccc484add5231192c4308da9347.jpg', '百度啊', '50', '1');
 INSERT INTO `brand` VALUES ('3', '腾讯qq', 'http://www.qq.com', '20180321\\7fbe34970bf408473fdc52b8e317f2dc.jpg', '腾讯qq', '50', '0');
 
@@ -154,8 +154,8 @@ CREATE TABLE `conf` (
 -- ----------------------------
 -- Records of conf
 -- ----------------------------
-INSERT INTO `conf` VALUES ('1', 'dmin', '杜鸣志', 'input', '1', '', 'input的value3');
-INSERT INTO `conf` VALUES ('2', 'd', '杜鸣志1', 'radio', '1', '杜鸣志,杜mz,dmin', '杜mz');
+INSERT INTO `conf` VALUES ('1', 'dmin', '123', 'input', '1', '', 'input的value3');
+INSERT INTO `conf` VALUES ('2', 'd', '1231', 'radio', '1', '123,杜mz,dmin', '杜mz');
 INSERT INTO `conf` VALUES ('3', 'sitename', '站点名称', 'select', '1', '一,二,三', '三');
 INSERT INTO `conf` VALUES ('4', 'checkbox', '可选值', 'checkbox', '1', '一,二,三,四', '');
 INSERT INTO `conf` VALUES ('5', 'textarea', '文本域', 'textarea', '1', '', '123123啊');
